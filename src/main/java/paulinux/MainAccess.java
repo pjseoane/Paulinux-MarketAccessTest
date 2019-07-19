@@ -34,18 +34,18 @@ public class MainAccess{
                 author          =prop.getProperty("ra.author");
 
 
-                // loginREST newConnection = new loginREST();
+                // RESTSession newConnection = new RESTSession();
                 System.out.println("Author :"+author);
 
 
                 // print outputs
                 System.out.println("\nREST Outputs:....");
-                System.out.println("\nTOKEN->>>>>>>>>>:"+loginREST.getToken());
+                System.out.println("\nTOKEN->>>>>>>>>>:"+ RESTSession.getToken());
 
-                String instruments =loginREST.getInstruments();
-                System.out.println("Elements "+instruments);
+                String instruments = RESTSession.getInstruments();
+                System.out.println("Todos los contratos "+instruments);
 
-                String instDetails =loginREST.getInstrumentDetail(ticker);
+                String instDetails = RESTSession.getInstrumentDetail(ticker);
                 System.out.println("Details for "+ticker+" "+instDetails);
 
 

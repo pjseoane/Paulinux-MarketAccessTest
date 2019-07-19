@@ -7,12 +7,12 @@ import java.net.URL;
 
 import java.util.Base64;
 
-public final class loginREST {
+public final class RESTSession {
 
     public static String marketID;
-    public static String endpoint;
-    public static String usr;
-    public static String pswd;
+    public static String endpoint=MainAccess.endpoint;
+    public static String usr=MainAccess.usr;
+    public static String pswd=MainAccess.pswd;
     public static String ticker;
 
 
@@ -20,20 +20,18 @@ public final class loginREST {
     private static String token=null;
 
 
-    loginREST() throws Exception{
-        //System.out.println(msg);
-        System.out.println("Login to: "+MainAccess.endpoint);
-        System.out.println("Processing token...:");
-        getToken();
-    }
 
-    public static String getToken()throws Exception{
+
+    public static String getToken() throws Exception{
+
+
+
         if (token == null){
-            url=    MainAccess.endpoint+ "auth/getToken";
+            url=    endpoint+ "auth/getToken";
 
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-            String userCredentials = MainAccess.usr+":"+MainAccess.pswd;
+            String userCredentials = usr+":"+pswd;
             String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userCredentials.getBytes()));
 
             con.setRequestMethod("POST");
@@ -65,6 +63,8 @@ public final class loginREST {
         return content.toString();
 
     }
+
+    @org.jetbrains.annotations.NotNull
     public static String getInstruments()throws Exception{
         url = MainAccess.endpoint+ "rest/instruments/all";
 
