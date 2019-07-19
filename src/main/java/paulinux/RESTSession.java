@@ -9,7 +9,7 @@ import java.util.Base64;
 
 public final class RESTSession {
 
-    public static String marketID;
+    public static String marketID=MainAccess.marketID;
     public static String endpoint=MainAccess.endpoint;
     public static String usr=MainAccess.usr;
     public static String pswd=MainAccess.pswd;
@@ -66,12 +66,12 @@ public final class RESTSession {
 
     @org.jetbrains.annotations.NotNull
     public static String getInstruments()throws Exception{
-        url = MainAccess.endpoint+ "rest/instruments/all";
+        url = endpoint+ "rest/instruments/all";
 
         return doGET(url);
     }
     public static String getInstrumentDetail(String symbol)throws Exception{
-        url = MainAccess.endpoint + "rest/instruments/detail?symbol=" + symbol + "&marketId=" + MainAccess.marketID;
+        url = endpoint + "rest/instruments/detail?symbol=" + symbol + "&marketId=" + marketID;
         return doGET(url);
     }
 }
