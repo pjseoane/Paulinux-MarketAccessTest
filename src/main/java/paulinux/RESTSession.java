@@ -1,5 +1,7 @@
 package paulinux;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -7,13 +9,13 @@ import java.net.URL;
 
 import java.util.Base64;
 
-public final class RESTSession {
+final class RESTSession {
 
-    public static String marketID=MainAccess.marketID;
-    public static String endpoint=MainAccess.endpoint;
-    public static String usr=MainAccess.usr;
-    public static String pswd=MainAccess.pswd;
-    public static String ticker;
+    private static String marketID=MainAccess.marketID;
+    private static String endpoint=MainAccess.endpoint;
+    private static String usr=MainAccess.usr;
+    private static String pswd=MainAccess.pswd;
+    private static String ticker;
 
 
     private static String url;
@@ -22,7 +24,7 @@ public final class RESTSession {
 
 
 
-    public static String getToken() throws Exception{
+    static String getToken() throws Exception{
 
 
 
@@ -43,7 +45,9 @@ public final class RESTSession {
         return token;
     }
 
+    @NotNull
     private static String doGET(String url) throws Exception{
+        RESTSession.url = url;
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestProperty("X-Auth-Token",token);
@@ -70,6 +74,7 @@ public final class RESTSession {
 
         return doGET(url);
     }
+    @NotNull
     public static String getInstrumentDetail(String symbol)throws Exception{
         url = endpoint + "rest/instruments/detail?symbol=" + symbol + "&marketId=" + marketID;
         return doGET(url);

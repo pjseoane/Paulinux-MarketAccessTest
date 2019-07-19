@@ -9,12 +9,11 @@ import java.util.Properties;
 
 public class MainAccess{
 
-    public static String marketID;
-    public static String endpoint;
-    public static String usr;
-    public static String pswd;
-    public static String ticker;
-    public static String author;
+    static String marketID;
+    static String endpoint;
+    static String usr;
+    static String pswd;
+
 
     public static void main(String[] args) throws Exception{
 
@@ -30,8 +29,8 @@ public class MainAccess{
                 endpoint        =prop.getProperty("ra.endpoint");
                 usr             =prop.getProperty("ra.usr");
                 pswd            =prop.getProperty("ra.pswd");
-                ticker          =prop.getProperty("ra.exampleTicker");
-                author          =prop.getProperty("ra.author");
+                String ticker   =prop.getProperty("ra.exampleTicker");
+                String author   =prop.getProperty("ra.author");
 
 
                 // RESTSession newConnection = new RESTSession();
@@ -46,7 +45,7 @@ public class MainAccess{
                 System.out.println("Todos los contratos "+instruments);
 
                 String instDetails = RESTSession.getInstrumentDetail(ticker);
-                System.out.println("Details for "+ticker+" "+instDetails);
+                System.out.println("Details for "+ ticker +" "+instDetails);
 
 
             }catch (IOException ex){
