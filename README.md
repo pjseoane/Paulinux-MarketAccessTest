@@ -1,6 +1,7 @@
 # restAccessROFEX-Java
 Introduccion a un conector REST en JAVA a la API de primary.
 Se muestran 3 consultas primitivas:
+
 Obtencion del token de session
 Consulta a todos los contratos listados en el mercado
 Consulta a los detalles de un contrato en particular.
