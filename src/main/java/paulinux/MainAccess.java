@@ -73,8 +73,11 @@ public class MainAccess{
 
 
                 //------------
-                JSONArray ja = (JSONArray) mData.get("BI");
-                System.out.println("Array length"+ja);
+
+                JSONObject bid2 =  (JSONObject) ((JSONArray) mData.get("BI")).get(0);
+                System.out.println("Size :"+bid2.get("size"));
+                System.out.println("Price: "+bid2.get("price"));
+
 
 
             }catch (IOException ex){

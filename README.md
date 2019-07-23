@@ -19,4 +19,5 @@ La estrucutra del proyecto es basica y se puede escalar.
 En el package configuration se define el fiel config.propertires donde se definen algunos campos 
 y el usr y pswd que asigna primary, la conexion es al entorno demo.
 
-Main Access, es el punto de entrada al demo y donde se hacen las consultas y outputs de la sprimarias definidas en RESTSession.
+Main Access, es el punto de entrada al demo y donde se hacen las consultas y outputs de las primarias definidas
+en RESTSession.
