@@ -68,17 +68,10 @@ public class MainAccess{
                 System.out.println("depth: "+jo.get("depth"));
                 System.out.println("marketData: "+jo.get("marketData"));
 
-                JSONObject mData=(JSONObject) jo.get("marketData");
-                System.out.println("Bid: "+mData.get("BI"));
 
-
-                //------------
-
-                JSONObject bid2 =  (JSONObject) ((JSONArray) mData.get("BI")).get(0);
-                System.out.println("Size :"+bid2.get("size"));
-                System.out.println("Price: "+bid2.get("price"));
-
-
+                JSONObject bid3=(JSONObject)((JSONArray)((JSONObject) jo.get("marketData")).get("BI")).get(0);
+                System.out.println("Size :"+bid3.get("size"));
+                System.out.println("Price: "+bid3.get("price"));
 
             }catch (IOException ex){
                 System.out.println("Some error loading config.properties");
