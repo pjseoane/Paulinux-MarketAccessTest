@@ -3,8 +3,15 @@ package paulinux;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Properties;
 
+//import jdk.nashorn.internal.parser.JSONParser;
+import org.json.simple.*;
+import org.json.simple.parser.*;
+import org.json.*;
+import org.json.simple.JSONObject;
 
 
 public class MainAccess{
@@ -16,7 +23,6 @@ public class MainAccess{
 
 
     public static void main(String[] args) throws Exception{
-
 
             try (InputStream input = new FileInputStream ("src/main/java/configuration/config.properties")){
 
@@ -32,7 +38,6 @@ public class MainAccess{
                 String ticker   =prop.getProperty("ra.exampleTicker");
                 String author   =prop.getProperty("ra.author");
 
-
                 // RESTSession newConnection = new RESTSession();
                 System.out.println("Author :"+author);
 
@@ -46,6 +51,30 @@ public class MainAccess{
 
                 String instDetails = RESTSession.getInstrumentDetail(ticker);
                 System.out.println("Details for "+ ticker +" "+instDetails);
+
+                // String instDetailsAll = RESTSession.getInstrumentDetailsAll();
+                // System.out.println("Details for all "+instDetailsAll);
+
+                String marketData = RESTSession.getMarketData(marketID, ticker,1);
+                System.out.println("Market Data for: "+ ticker +" "+marketData);
+                System.out.println();
+                System.out.println("Parsing JSON: ");
+
+                Object obj = new JSONParser().parse(marketData);
+
+                JSONObject jo = (JSONObject) obj;
+
+                System.out.println("JSON obj: "+jo);
+                System.out.println("depth: "+jo.get("depth"));
+                System.out.println("marketData: "+jo.get("marketData"));
+
+                JSONObject mData=(JSONObject) jo.get("marketData");
+                System.out.println("Bid: "+mData.get("BI"));
+
+
+                //------------
+                JSONArray ja = (JSONArray) mData.get("BI");
+                System.out.println("Array length"+ja);
 
 
             }catch (IOException ex){

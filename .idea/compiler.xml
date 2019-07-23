@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="restAccessROFEX" />
+        <module name="restAccessROFEX-Java" />
         <module name="AccessRofex-Java" />
+        <module name="restAccessROFEX" />
       </profile>
     </annotationProcessing>
   </component>

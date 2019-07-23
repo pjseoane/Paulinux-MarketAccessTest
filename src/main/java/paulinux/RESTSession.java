@@ -15,7 +15,7 @@ final class RESTSession {
     private static String endpoint=MainAccess.endpoint;
     private static String usr=MainAccess.usr;
     private static String pswd=MainAccess.pswd;
-    private static String ticker;
+    //private static String ticker;
 
 
     private static String url;
@@ -68,7 +68,8 @@ final class RESTSession {
 
     }
 
-    @org.jetbrains.annotations.NotNull
+
+    @NotNull
     public static String getInstruments()throws Exception{
         url = endpoint+ "rest/instruments/all";
 
@@ -79,4 +80,17 @@ final class RESTSession {
         url = endpoint + "rest/instruments/detail?symbol=" + symbol + "&marketId=" + marketID;
         return doGET(url);
     }
+
+    @NotNull
+    public static String getInstrumentDetailsAll() throws Exception{
+        url = endpoint + "rest/instruments/details";
+        return doGET(url);
+    }
+
+
+    public static String getMarketData(String marketID, String symbol, int depth) throws Exception{
+        url=endpoint+"rest/marketdata/get?marketId=" + marketID + "&symbol=" + symbol + "&entries=BI,OF,LA,OP,CL,SE,OI&depth=" + depth;
+        return doGET(url);
+    }
+
 }
