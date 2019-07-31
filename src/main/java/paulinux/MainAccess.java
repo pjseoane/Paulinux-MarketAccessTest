@@ -63,15 +63,52 @@ public class MainAccess{
                 Object obj = new JSONParser().parse(marketData);
 
                 JSONObject jo = (JSONObject) obj;
+                JSONObject  md= (JSONObject) jo.get("marketData");
 
                 System.out.println("JSON obj: "+jo);
                 System.out.println("depth: "+jo.get("depth"));
-                System.out.println("marketData: "+jo.get("marketData"));
+                System.out.println("marketData "+md);
+
+                JSONArray  bi= (JSONArray) md.get("BI");
+                JSONArray  of= (JSONArray) md.get("OF");
+
+                double bidSize=0;
+                double bidPrice=0;
+                double offerSize=0;
+                double offerPrice=0;
+
+                if (!bi.isEmpty()){
+
+                    JSONObject bid3=(JSONObject)(bi.get(0));
+                    bidSize= Double.parseDouble(bid3.get("size").toString());
+                    bidPrice=Double.parseDouble(bid3.get("price").toString());
 
 
-                JSONObject bid3=(JSONObject)((JSONArray)((JSONObject) jo.get("marketData")).get("BI")).get(0);
-                System.out.println("Size :"+bid3.get("size"));
-                System.out.println("Price: "+bid3.get("price"));
+                };
+
+                if (!of.isEmpty()){
+
+                    JSONObject offer3=(JSONObject)(of.get(0));
+                    offerSize=Double.parseDouble(offer3.get("size").toString());
+                    offerPrice=Double.parseDouble(offer3.get("price").toString());
+//                    System.out.println("Size :" + offerSize);
+//                    System.out.println("Price :" + offerPrice);
+
+                };
+
+                System.out.println("\nMarket Data for: "+ticker);
+                System.out.println("Bid/Offer: "+bidPrice+" / "+offerPrice);
+                System.out.println("Size: "+bidSize+" / "+offerSize);
+
+
+
+
+//               JSONObject bid3=(JSONObject)((JSONArray)((JSONObject) jo.get("marketData")).get("BI")).get(0);
+//                    System.out.println("Size :" + bid3.get("size"));
+//                    System.out.println("Price: " + bid3.get("price"));
+//
+//                    System.out.println("No BID");
+//
 
             }catch (IOException ex){
                 System.out.println("Some error loading config.properties");
