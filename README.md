@@ -1,4 +1,4 @@
-# MarketAccessTest
+# Paulinux-MarketAccessTest
 About the Project:
 Some examples in JAVA about accessing primary's API for ROFEX Exchange.
 Author: paulino seoane/ paulinux/ pseoane@balanz.com/ pjseoane@gmail.com
