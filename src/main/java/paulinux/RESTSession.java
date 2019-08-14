@@ -34,6 +34,7 @@ final class RESTSession {
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             String userCredentials = usr+":"+pswd;
+            //System.out.println("User Credentials: "+userCredentials);
             String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userCredentials.getBytes()));
 
             con.setRequestMethod("POST");

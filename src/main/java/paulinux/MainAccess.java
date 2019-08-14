@@ -44,6 +44,8 @@ public class MainAccess{
 
                 // print outputs
                 System.out.println("\nREST Outputs:....");
+                System.out.println("\nUser:...."+usr);
+                System.out.println("\nurl:...."+endpoint);
                 System.out.println("\nTOKEN->>>>>>>>>>:"+ RESTSession.getToken());
 
                 String instruments = RESTSession.getInstruments();
